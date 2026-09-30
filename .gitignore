@@ -5,3 +5,4 @@ __pycache__/
 *.joblib
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/robos-automotor-armas-de-fuego-y-denuncias-de-robo-2018-2025.xlsx
