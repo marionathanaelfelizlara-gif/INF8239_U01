@@ -8,14 +8,31 @@
 - **Error más costoso:** Confundir un registro de **Armas de Fuego** con otra categoría — este tipo de robo tiene mayor severidad y prioridad de intervención policial, así que un falso negativo aquí (predecir otra categoría cuando en realidad es Armas de Fuego) es más costoso que un error entre Automotor y General.
 - **Usuario de la solución:** Analistas del Ministerio de Interior y Policía (MIP) o de un observatorio de seguridad ciudadana, para monitorear tendencias por provincia/periodo y asegurar consistencia en el registro de denuncias.
 
-## Procedencia y licencia
+## Comparación de candidatos
+
+| Criterio | Candidato A — Turismo Cultural | Candidato B — Robos (elegido) |
+|---|---|---|
+| **Procedencia** | Ministerio de Turismo (MITUR), Depto. de Turismo Cultural | Ministerio de Interior y Policía (MIP) |
+| **URL ficha** | [datos.gob.do/dataset/turismo-cultural](https://datos.gob.do/dataset/turismo-cultural) | [datos.gob.do/dataset/estadisticas-de-robos-...](https://datos.gob.do/dataset/estadisticas-de-robos-de-automotores-armas-de-fuego-y-denuncias-de-robos) |
+| **Licencia** | ODbL (Open Database License) | ODbL (Open Database License) |
+| **Cobertura temporal** | 2018–2026 | 2018–2025 |
+| **Formatos disponibles** | CSV, ODS, XLSX | XLSX, CSV, ODS |
+| **Filas/columnas** | No evaluado a fondo — organizado por producto/indicador/mes, sin descarga ni carga completa del archivo | 6,516 filas × 6 columnas (tras unificar las 3 hojas del Excel) |
+| **Target y clases** | No hay una variable de clasificación clara y predefinida; son series de indicadores turísticos, más apto para análisis descriptivo/series de tiempo que para clasificación | `categoria_robo`, 3 clases (Automotor, Armas de Fuego, General) |
+| **Ausentes** | No evaluado | `tipo_detalle`: 16.3% ausente (1,061 de 6,516 filas); resto de columnas completas |
+| **Riesgo de fuga** | No evaluado | Alto en `tipo_detalle` (proxy casi perfecto del target) — se excluye del modelo |
+
+**Motivo de la decisión:** se descartó el Candidato A porque no ofrece una variable objetivo de clasificación clara y verificable con al menos dos clases (requisito del paso 3 del manual), mientras que el Candidato B sí la tiene de forma natural (`categoria_robo`, derivado de la hoja de origen de cada fila).
+
+**Estado de aprobación docente:** _pendiente de confirmar por el estudiante antes de la entrega final._
+
+## Procedencia y licencia (Candidato B — elegido)
 
 - **Fuente:** Ministerio de Interior y Policía (MIP), República Dominicana.
 - **Publicado en:** [datos.gob.do](https://datos.gob.do/dataset/estadisticas-de-robos-de-automotores-armas-de-fuego-y-denuncias-de-robos)
 - **Licencia:** ODbL (Open Database License).
 - **Cobertura temporal:** 2018–2025.
 - **Formato original:** Excel (`.xlsx`) con 3 hojas de esquemas distintos: `ROBOS_AUTOMOTOR`, `ROBOS_ARMAS_FUEGO`, `ROBOS_GENERALES`.
-- **Candidato alternativo considerado:** Turismo Cultural (MITUR) — descartado en favor de este dataset porque ofrece un target de clasificación multiclase más claro (categoria_robo) y una pregunta de negocio más concreta.
 
 ## Justificación de columna retirada (fuga de información)
 
